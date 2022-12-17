@@ -1,5 +1,6 @@
 # injectee
 Test program for hardware fault injection supporting multiple platforms
+Open injectee.ino in Arduino IDE and choose your target platform (you may need to install the proper boards using the boards manager)
 
 Burn on the target hardware and try yo make the number cruncher fail.
 Whenever possible there are 3 outputs that can be monitored:
