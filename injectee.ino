@@ -5,7 +5,7 @@
 // Software serial RX pin2 / TX pin3 115200 8N1
 // Default LED blinks 2 times on boot, ~1 per sec and 5 times fast if a failure was detected 
 
-#define VERSION "Injectee v0.0.1"
+#define VERSION "Injectee v0.0.2"
 
 #ifdef ARDUINO_ARCH_RP2040
  #include "FI_RP2040.h"
@@ -15,16 +15,20 @@
  #include "FI_ESP32.h"
 #elif defined(__MK20DX256__)
  #include "FI_TEENSY.h"
+#elif defined(__AVR_ATtiny88__)
+ #include "FI_ATT88.h"
 #else
  #include "FI_GenericBoard.h"
 #endif
 
-char const str_to_crunch[] = "00000000000000000000000000000000\r\n"
-                             "11111111111111111111111111111111\r\n"
-                             "00000000000000000000000000000000\r\n"
-                             "11111111111111111111111111111111\r\n"
-                             "00000000000000000000000000000000\r\n";
-                     
+#ifndef OVERRIDE_STR
+char const str_to_crunch[] = "0000000000000000000000000000000\r\n"
+                             "1111111111111111111111111111111\r\n"
+                             "0000000000000000000000000000000\r\n"
+                             "1111111111111111111111111111111\r\n"
+                             "0000000000000000000000000000000\r\n";
+#endif
+
 const int len_to_crunch = strlen(str_to_crunch);
 uint32_t crunch_ok = 0;
 uint32_t crunch_res = 0;

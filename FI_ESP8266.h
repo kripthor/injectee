@@ -1,6 +1,6 @@
 //ONLY INCLUDE IF ARCH IS FOR ESP8266
 //ESP8266 has inverted led logic
-#define ITERS 200000
+#define ITERS 2000
 #include <SoftwareSerial.h>
 #define rxPin 2
 #define txPin 3
